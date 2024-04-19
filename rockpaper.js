@@ -14,4 +14,16 @@ function getComputerChoice() {
         return "Scissors";
     }
 }
+
+let computerSelection = getComputerChoice();
+
+function getPlayerChoice() {
+    return prompt("Choose one from: Rock, Paper or Scissors");
+}
+
+
+// function playRound(playerSelection, computerSelection) {
+//     if(playerSelection === "rock")
+// }
+
 console.log(getComputerChoice());
