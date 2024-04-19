@@ -56,7 +56,6 @@ function playRound(playerSelection, computerSelection) {
 
 function searchResult(string) {
     if(string.search("draw") > 0){
-        console.log("Draw detected");
         return 0;
     }
     if(string.search("won") > 0){
