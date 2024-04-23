@@ -14,15 +14,6 @@ function getComputerChoice() {
     }
 }
 
-function getPlayerChoice() {
-    return prompt("Choose one from: Rock, Paper or Scissors").toLowerCase();
-}
-
-
-// console.log(playerSelection);
-// console.log(computerSelection);
-
-// console.log(playRound(playerSelection, computerSelection));
 function playRound(playerSelection, computerSelection) {
     if(playerSelection.toLowerCase() === "rock"){
         if(computerSelection.toLowerCase() === "rock"){
@@ -65,31 +56,107 @@ function searchResult(string) {
     }
 }
 
-function playGame() {
-    let playerSelection = getPlayerChoice();
-    let computerSelection = getComputerChoice();
-    let player = 0;
-    let computer = 0;
-    let completedrounds = 0;
-    let validrounds = 0;
-    while( validrounds !=5){
-        let won = searchResult(playRound(playerSelection, computerSelection));
-        if(won === 1){
-            player++;
-            validrounds++;
-            completedrounds++;
-        }else if(won === -1) {
-            computer++;
-            validrounds++;
-            completedrounds++;
-        }else if(won === 0) {
-            completedrounds++;
-        }
-        playerSelection = getPlayerChoice();
-        computerSelection = getComputerChoice();
-        console.log("Current score: " + player + " you - " + computer + " computer");
-        console.log("Total rounds played: " + completedrounds + " from which, rounds without draw: " + validrounds);
-    }
-}
+// function playGame() {
+//     let playerSelection = getPlayerChoice();
+//     let computerSelection = getComputerChoice();
+//     let player = 0;
+//     let computer = 0;
+//     let completedrounds = 0;
+//     let validrounds = 0;
+//     while( validrounds !=5){
+//         let won = searchResult(playRound(playerSelection, computerSelection));
+//         if(won === 1){
+//             player++;
+//             validrounds++;
+//             completedrounds++;
+//         }else if(won === -1) {
+//             computer++;
+//             validrounds++;
+//             completedrounds++;
+//         }else if(won === 0) {
+//             completedrounds++;
+//         }
+//         playerSelection = getPlayerChoice();
+//         computerSelection = getComputerChoice();
+//         console.log("Current score: " + player + " you - " + computer + " computer");
+//         console.log("Total rounds played: " + completedrounds + " from which, rounds without draw: " + validrounds);
+//     }
+// }
 
-playGame();
+const rock = document.getElementById("rock");
+const paper = document.getElementById("paper");
+const scissors = document.getElementById("scissors");
+const results = document.getElementById("results");
+const scoreboard = document.getElementById("scoreboard");
+let playerScore = computerScore = 0;
+
+rock.addEventListener("click", () => {
+    const result = (playRound("rock", getComputerChoice()));
+    results.textContent = result;
+    let won = searchResult(result);
+    if(won === 1){
+        playerScore++;
+    }
+    if(won === -1){
+        computerScore++;
+    }
+    scoreboard.textContent = "Current score: " + playerScore + " you - " + computerScore + " computer";
+    if(playerScore == 5 || computerScore == 5){
+        rock.disabled = true;
+        paper.disabled = true;
+        scissors.disabled = true;
+        if(playerScore == 5){
+            results.textContent = "You won."
+        } else{
+            results.textContent = "Computer won."
+        }
+    }
+});
+paper.addEventListener("click", () => {
+    const result = (playRound("paper", getComputerChoice()))
+    results.textContent = result;
+    let won = searchResult(result);
+    if(won === 1){
+        playerScore++;
+    }
+    if(won === -1){
+        computerScore++;
+    }
+    scoreboard.textContent = "Current score: " + playerScore + " you - " + computerScore + " computer";
+    if(playerScore == 5 || computerScore == 5){
+        rock.disabled = true;
+        paper.disabled = true;
+        scissors.disabled = true;
+        if(playerScore == 5){
+            results.textContent = "You won."
+        } else{
+            results.textContent = "Computer won."
+        }
+    }
+});
+scissors.addEventListener("click", () =>{
+    const result = (playRound("scissors", getComputerChoice()))
+    results.textContent = result;
+    let won = searchResult(result);
+    if(won === 1){
+        playerScore++;
+    }
+    if(won === -1){
+        computerScore++;
+    }
+    scoreboard.textContent = "Current score: " + playerScore + " you - " + computerScore + " computer";
+    if(playerScore == 5 || computerScore == 5){
+        rock.disabled = true;
+        paper.disabled = true;
+        scissors.disabled = true;
+        if(playerScore == 5){
+            results.textContent = "You won."
+        } else{
+            results.textContent = "Computer won."
+        }
+    }
+});
+
+scoreboard.textContent = "Current score: " + playerScore + " you - " + computerScore + " computer";
+
+

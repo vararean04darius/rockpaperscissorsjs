@@ -1,4 +1,27 @@
 
 body {
     background-color: blanchedalmond;
+    display: flex;
+}
+
+.container{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: auto;
+}
+.buttons{
+    gap: 10px;
+}
+button {
+    height: 125px;
+    width: 250px;
+    background-color: dimgray;
+    color:aqua;
+    border-radius: 25px;
+}
+.scoreboard{
+    font-size: 24px;
 }
